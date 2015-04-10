@@ -30,4 +30,21 @@ https://www.kaggle.com/c/otto-group-product-classification-challenge
     And there are many 0 values. It just seems to make more sense....
 
 
+### Brainstorming
+
+It appears many features have many zero values. Using *(sum(X>0))/size(X,1)*
+it is clear that most features have large percentage of zeros. The idea is
+not to ignore these, but to give higher emphasize to those features with
+more non-zero items, as I expect these to have more variance and therefore
+more predictive value.
+
+Using *sum(sum(X>0)/size(X,1)>0.1)* I see that 74 features have at least 10%
+non-zero values. Similarly:
+
+>20% : 39 features
+>30% : 16 features
+>40% : 10 features  (14, 16, 24, 25, 40, 48, 54, 62, 67 & 86)
+>50% :  4 features  (24, 25, 48 & 67)
+>60% :  2 features  (24 & 67)
+>70% :  0 features
 
