@@ -10,5 +10,7 @@ https://www.kaggle.com/c/otto-group-product-classification-challenge
 3. Remove first row (labels): X(1,:)=[];
 4. Set Y to be the target: Y = X(:,95);
 5. Remove last column (target): X(:,95)=[];
+6. Save X and Y: save xydata.mat X Y
+
 
 
