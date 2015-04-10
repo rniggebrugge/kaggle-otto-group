@@ -48,3 +48,9 @@ non-zero values. Similarly:
 >60% :  2 features  (24 & 67)
 >70% :  0 features
 
+Now my idea is to add the following features:
+- quadratic for all feature (adding 93 features)
+- cross products for all 10 features with at least 40% non-zero (+90 fts)
+- 3degree power for top 4 (+4*4*4 = + 64fts)
+
+So total features will be 93+93+90+64 = 340 features
