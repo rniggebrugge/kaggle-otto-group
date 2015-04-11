@@ -19,7 +19,7 @@ function [Xreturn Y] = add_features(X)
 
 	%% power2-products (except quadratic)
 
-	Xpower2 = zeros(m, 180);
+	Xpower2 = zeros(m, 90);
 	for row=1:m
 		column = 1;
 		for i=1:9
