@@ -7,7 +7,7 @@ function [x xadd xdivide] = features_set_3(X_in, xd)
 		xmax=xd;
 	end
 
-	xadd = zeros(1, size(x,2));
+	xadd = zeros(1, size(X_in,2));
 	xdivide = xmax;
 	x = bsxfun(@rdivide, X_in, xdivide);
 
