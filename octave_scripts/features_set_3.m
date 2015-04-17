@@ -1,16 +1,16 @@
 function [x xadd xdivide] = features_set_3(X_in, xd)
 
-	if ~exist('xd', 'var') || isempty(xd)
-		xmax = max(X_in);
-		xmax = max(xmax, 1e-14);
-	else
-		xmax=xd;
-	end
+	% if ~exist('xd', 'var') || isempty(xd)
+	% 	xmax = max(X_in);
+	% 	xmax = max(xmax, 1e-14);
+	% else
+	% 	xmax=xd;
+	% end
 
-	xadd = zeros(1, size(X_in,2));
-	xdivide = xmax;
-	x = bsxfun(@rdivide, X_in, xdivide);
+	% xadd = zeros(1, size(X_in,2));
+	% xdivide = xmax;
+	% x = bsxfun(@rdivide, X_in, xdivide);
 
-	x = X_in;
+	x = log(1+X_in);
 
 end
