@@ -1,5 +1,4 @@
-function [x xadd xdivide] = features_set_2(X_in, xd)
-function [x xadd xdivide] = features_set_2(X_in, xd)
+function [x xadd xdivide] = features_set_3(X_in, xd)
 
 	if ~exist('xd', 'var') || isempty(xd)
 		xmax = max(X_in);
