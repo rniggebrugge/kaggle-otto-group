@@ -79,7 +79,7 @@ function [theta1_return theta2_return xtrain xadd xdiv] = run_series(iterations,
 					hl_optimal = hidden_layer_size;
 					theta1_return = Theta1;
 					theta2_return = Theta2;
-					optimal_feature_set= f;
+					optimal_feature_set= feature_set;
 				end
 
 
@@ -92,7 +92,7 @@ function [theta1_return theta2_return xtrain xadd xdiv] = run_series(iterations,
 		         ''], self_accuracy);
 				fprintf(['Accuracy on test: %9.5f '...
 		         ''], accuracy);
-				fprintf('Feature set: %i', f);
+				fprintf('Feature set: %i', feature_set);
 				fprintf('\n');
 			end
 
