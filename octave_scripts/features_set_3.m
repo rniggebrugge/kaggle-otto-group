@@ -11,4 +11,6 @@ function [x xadd xdivide] = features_set_3(X_in, xd)
 	xdivide = xmax;
 	x = bsxfun(@rdivide, X_in, xdivide);
 
+	x = X_in;
+
 end
