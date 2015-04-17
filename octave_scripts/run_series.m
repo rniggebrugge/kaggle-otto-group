@@ -10,12 +10,11 @@ function [theta1_return theta2_return xtrain xadd xdiv] = run_series(iterations,
 
 	if feature_set==1
 		[xtrain xadd xdiv] = features_set_1(xtrain);
-		size(xdiv)
+		xtest = features_set_1(xtest, xdiv);
 		xtest = features_set_1(xtest, xdiv);
 	elseif feature_set==2
 		[xtrain xadd xdiv] = features_set_2(xtrain);
-		size(xdiv)
-		xtest = features_set_1(xtest, xdiv);
+		xtest = features_set_2(xtest, xdiv);
 	else
 		fprintf('Not yet implemented');
 	end
