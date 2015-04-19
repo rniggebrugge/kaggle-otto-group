@@ -21,8 +21,7 @@ function [X Y Xmean Xrange] = features_set_6(X_in, xm, xr)
 
     X2 = X.^2;
 
-    avg_features = csvread("non_zero_means.csv");
-    var_features = csvread("non_zero_variations.csv");
+    [g_means g_vars] = group_stats();
 
     % The method below takes the absolute distance for each feature with the
     % expected (average) value for that feature for each class.
@@ -39,8 +38,8 @@ function [X Y Xmean Xrange] = features_set_6(X_in, xm, xr)
 
     distances = [];
     for idx=1:9
-        avg_feature_vector = avg_features(idx,:);
-        var_feature_vector = var_features(idx,:);
+        avg_feature_vector = g_means(idx,:);
+        var_feature_vector = g_vars(idx,:);
         var_feature_vector = max(var_feature_vector, 1e-14);
         dt = bsxfun(@minus,initX, avg_feature_vector);
         dt = (dt.^2);
