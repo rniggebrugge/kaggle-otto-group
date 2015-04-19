@@ -12,7 +12,7 @@ function [X Y Xmean Xrange] = features_set_6(X_in, xm, xr)
         Xrange = xr;
     end
 
-    X = (X.-Xmean)./Xrange;
+    X = X./Xrange;
 
     v = sum(X>0);
     [i ix] = sort(v, "descend");
