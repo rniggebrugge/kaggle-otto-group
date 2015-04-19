@@ -28,6 +28,14 @@ function [theta1_return theta2_return xtrain xadd xdiv] = run_series(iterations,
 			fprintf("feature set 4 \n");
 			[xtrain xadd xdiv] = features_set_4(xtrain_raw);
 			xtest = features_set_4(xtest_raw, xdiv);
+		elseif feature_set==5
+			fprintf("feature set 5 \n");
+			[xtrain xadd xdiv] = features_set_5(xtrain_raw);
+			xtest = features_set_5(xtest_raw, xdiv);
+		elseif feature_set==6
+			fprintf("feature set 6 \n");
+			[xtrain xadd xdiv] = features_set_6(xtrain_raw);
+			xtest = features_set_6(xtest_raw, xadd, xdiv);
 			else
 			fprintf('original set\n');
 			xtrain = xtrain_raw;
