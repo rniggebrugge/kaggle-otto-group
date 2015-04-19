@@ -1,8 +1,6 @@
 function [X Y Xmean Xrange] = features_set_6(X_in, xm, xr)
 
     X = X_in;
-    Y = X(:,end);
-    X(:, end) = [];
     initX = X;
     X = log(X+1);
 
