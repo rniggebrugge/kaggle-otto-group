@@ -1,6 +1,4 @@
-# kaggle-otto-group
-
-**Some ideas for averaging over the ensemble
+###Some ideas for averaging over the ensemble
 
 When it comes to collecting a large number of models and translate these into one, hopefully highly accurate model, 
 I find the theory a bit hard for now. Let's try with the following approaches:
