@@ -1,8 +1,9 @@
-function [prediction ys] = ensemble_averaging(c, x)
+function [prediction majority ys] = ensemble_averaging(c, x)
 	
 	n_models = size(c{1},2);
 
 	prediction = zeros(size(x,1),9);
+	majority = zeros(size(x,1),9);
 	ys = zeros(size(x,1),n_models);
 
 	for model=1:n_models
@@ -32,6 +33,7 @@ function [prediction ys] = ensemble_averaging(c, x)
 
 		[p h2] = predict(theta1, theta2, xtest);
 		ys(:,model)=p;
+		majority += eye(9)(p,:);
 
 		prediction += h2;
 
