@@ -8,6 +8,7 @@ function [prediction majority ys] = ensemble_averaging(c, x)
 
 	for model=1:n_models
 
+		fprintf ('Model %i of %i \n',[model, n_models]);
 		theta1 = c{1}{model};
 		theta2 = c{2}{model};
 		feature_set = c{3}{model};
@@ -32,10 +33,11 @@ function [prediction majority ys] = ensemble_averaging(c, x)
 		end
 
 		[p h2] = predict(theta1, theta2, xtest);
+		h2 = h2./sum(h2,2);
 		ys(:,model)=p;
 		majority += eye(9)(p,:);
 
-		prediction += h2;
+		prediction += accuracy*h2;
 
 	end
 

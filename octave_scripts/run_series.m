@@ -6,6 +6,15 @@ function [theta1_return theta2_return c] = run_series(iterations, m, ...
 	simulation = 1;
 
 
+	xtrain_raw = csvread("fair_training.csv");
+	ytrain = xtrain_raw(:,95);
+	xtrain_raw(:,95) = [];
+	xtrain_raw(:,1) = [];
+	xtest_raw  = csvread("remaining_testing.csv");
+	ytest  = xtest_raw(:,95);
+	xtest_raw(:,95)=[];
+	xtest_raw(:,1)=[];
+
 
 	for f=1:length(feature_set_vector)
 		feature_set = feature_set_vector(f);
@@ -17,11 +26,11 @@ function [theta1_return theta2_return c] = run_series(iterations, m, ...
 
 			for i=1:length(lambda_vector)
 
-				[x y] = get_raw_data(m+7000);
-				xtrain_raw = x(1:m,:);
-				ytrain = y(1:m);
-				xtest_raw  = x(m+1:end,:);
-				ytest  = y(m+1:end);
+				% [x y] = get_raw_data(m+7000);
+				% xtrain_raw = x(1:m,:);
+				% ytrain = y(1:m);
+				% xtest_raw  = x(m+1:end,:);
+				% ytest  = y(m+1:end);
 
 				if feature_set==1
 					fprintf("feature set 1 \n");
