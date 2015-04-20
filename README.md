@@ -10,7 +10,7 @@ I find the theory a bit hard for now. Let's try with the following approaches:
 
 3. Give each model a weight per category, based on the accuracy of successfully predicting that category. 
 
-4. As 3., but using F1 score (2*precision*recall/(precision+recall)) per category.
+4. As 3., but using F1 score (2\*precision\*recall/(precision+recall)) per category.
 
 5. Give each model equal weight (Theta_i, with i = 1:#models) and calculate cost (1-accuracy) for the overall model. 
   Train this model-of-models to have the optimal Theta.
