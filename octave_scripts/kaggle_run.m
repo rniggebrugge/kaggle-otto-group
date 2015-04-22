@@ -1,5 +1,5 @@
 function [Theta1 Theta2] = ...
-	kaggle_run(x, y, hidden_layer_size, lambda, iterations)
+	kaggle_run(x, y, hidden_layer_size, lambda, iterations, th1, th2)
 
 	if ~exist('lambda', 'var') || isempty(lambda)
 	    lambda = 0.0;
@@ -14,8 +14,13 @@ function [Theta1 Theta2] = ...
 	input_layer_size = size(x,2); 
 	num_labels = 9; 
 
-	initial_Theta1 = randInitializeWeights(input_layer_size, hidden_layer_size);
-	initial_Theta2 = randInitializeWeights(hidden_layer_size, num_labels);
+	if ~exist('th1', 'var') || isempty(th1)
+		initial_Theta1 = randInitializeWeights(input_layer_size, hidden_layer_size);
+		initial_Theta2 = randInitializeWeights(hidden_layer_size, num_labels);
+	else
+		initial_Theta1 = th1;
+		initial_Theta2 = th2;
+	end
 
 	initial_nn_params = [initial_Theta1(:) ; initial_Theta2(:)];
 

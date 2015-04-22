@@ -1,7 +1,7 @@
 function [theta1_return theta2_return c] = run_series(iterations, m, ...
 	lambda_vector, hl_vector, feature_set_vector, th1, th2)
 
-	max_acc = -10;
+	max_acc = 10;
 
 	simulation = 1;
 
@@ -102,18 +102,19 @@ function [theta1_return theta2_return c] = run_series(iterations, m, ...
 
 				pred_self = predict(Theta1, Theta2, xtrain);
 				self_accuracy = mean(pred_self==ytrain);
-				pred = predict(Theta1, Theta2, xtest);
+				[pred h2] = predict(Theta1, Theta2, xtest);
 				accuracy = mean(pred==ytest);
+				logloss = multiclass_logloss(ytrain, h2);
 
 				cTheta1{simulation} = Theta1;
 				cTheta2{simulation} = Theta2;
 				cFeatureSet{simulation} = feature_set;
 				cAdd{simulation} = xadd;
 				cDiv{simulation} = xdiv;
-				cAccuracy{simulation} = accuracy;
+				cAccuracy{simulation} = logloss;
 
-				if accuracy>max_acc
-					max_acc = accuracy;
+				if logloss<max_acc
+					max_acc = logloss;
 					lambda_optimal = lambda;
 					hl_optimal = hidden_layer_size;
 					theta1_return = Theta1;
@@ -129,6 +130,8 @@ function [theta1_return theta2_return c] = run_series(iterations, m, ...
 		         ''], hidden_layer_size);
 				fprintf(['Accuracy on traning: %9.5f '...
 		         ''], self_accuracy);
+				fprintf(['Logloss on test: %9.5f '...
+		         ''], logloss);
 				fprintf(['Accuracy on test: %9.5f '...
 		         ''], accuracy);
 				fprintf('Feature set: %i', feature_set);
