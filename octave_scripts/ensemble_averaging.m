@@ -1,10 +1,11 @@
-function [prediction majority ys] = ensemble_averaging(c, x)
+function [prediction majority ys all_h2] = ensemble_averaging(c, x, TH)
 	
 	n_models = size(c{1},2);
 
 	prediction = zeros(size(x,1),9);
 	majority = zeros(size(x,1),9);
 	ys = zeros(size(x,1),n_models);
+	all_h2 = zeros(size(x,1),n_models*9);
 
 	for model=1:n_models
 
@@ -14,7 +15,13 @@ function [prediction majority ys] = ensemble_averaging(c, x)
 		feature_set = c{3}{model};
 		xadd = c{4}{model};
 		xdiv = c{5}{model};
-		accuracy = c{6}{model};
+		if ~exist('TH', 'var') || isempty(TH)
+			accuracy = c{6}{model};
+		else
+			accuracy = TH(model);
+		end
+
+		accuracy = 1;
 
 		if feature_set==1
 			xtest = features_set_1(x, xdiv);
@@ -39,6 +46,10 @@ function [prediction majority ys] = ensemble_averaging(c, x)
 
 		prediction += accuracy*h2;
 
-	end
+		all_h2(:,(9*(model-1)+1):(9*model))=h2;
 
+	end
+%majority = 0;
+%ys = 0;
+%all_h2 = 0;
 end 

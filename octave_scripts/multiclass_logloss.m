@@ -1,6 +1,6 @@
 function logloss = multiclass_logloss(y, Theta1, Theta2, X)
 
-	m = size(X);
+	m = size(X,1);
 	n = size(Theta2, 1);
 
 	y = eye(n)(y,:);
@@ -18,14 +18,10 @@ function logloss = multiclass_logloss(y, Theta1, Theta2, X)
 
 	p = log(p);
 
-	p
-
 	temp = p.*y;
 
-	sum(temp(:))
+	logloss = -1/m*sum(temp(:));
 
-	% logloss = -1/m*sum(temp(:));
-logloss=3;
 end
 
 
