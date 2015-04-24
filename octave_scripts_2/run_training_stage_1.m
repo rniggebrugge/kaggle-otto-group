@@ -1,4 +1,4 @@
-function [theta1_return theta2_return c] = run_training_stage_1(...
+function [theta1_return theta2_return c performance] = run_training_stage_1(...
 	xtrain_raw,
 	ytrain,
 	xtest_raw,
@@ -28,7 +28,9 @@ function [theta1_return theta2_return c] = run_training_stage_1(...
 
 	min_cost = 10;
 
+
 	simulation = 1;
+	performance = [];
 
 	for f=1:length(feature_set_vector)
 		feature_set = feature_set_vector(f);
@@ -111,6 +113,8 @@ function [theta1_return theta2_return c] = run_training_stage_1(...
 				[pred h2] = predict(Theta1, Theta2, xtest);
 				accuracy = mean(pred==ytest);
 				logloss = multiclass_logloss2(ytest, h2);
+				performance = [performance; [feature_set hidden_layer_size lambda feature_set input_layer_size logloss]];
+
 
 				cTheta1{simulation} = Theta1;
 				cTheta2{simulation} = Theta2;
@@ -155,8 +159,8 @@ function [theta1_return theta2_return c] = run_training_stage_1(...
 
 	fprintf('\n==================================================================');
 	fprintf('\n==================================================================');
-	fprintf(['\n\n Best result: %9.5f' ...
-			'\n Lambda: %6.2f' ...
+	fprintf(['\n\n Best result: %9.5f ' ...
+			'\n Lambda: %6.2f ' ...
 			'\n Hiddenlayer: %i ' ...
 			'\n Feature set: %i \n'] , [min_cost lambda_optimal hl_optimal optimal_feature_set]);
 	fprintf('\n==================================================================');
