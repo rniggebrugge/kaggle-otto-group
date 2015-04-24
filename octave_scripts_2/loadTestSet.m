@@ -5,7 +5,7 @@ function [x y] = loadTestSet()
 	% 	x
 	% 	y
 
-	data = csvread("../data_training/data_test.csv");
+	data = csvread("../data_test/data_test.csv");
 	y = data(:,end);
 	data(:,end) = [];
 	x = data;
