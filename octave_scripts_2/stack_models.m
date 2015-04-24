@@ -28,7 +28,7 @@ function h2_all = stack_models(c, x)
 		xdiv = c{5}{model};
 		logloss = c{6}{model};
 
-		if logloss<.6
+		if logloss<1.6
 			if feature_set==1
 				xtest = features_set_1(x, xdiv);
 			elseif feature_set==2
