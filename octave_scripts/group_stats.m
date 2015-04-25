@@ -1,5 +1,5 @@
 function [means vars] = group_stats()
-
+%{
 	[X Y] =  get_raw_data(-1);
 
 	means = [];
@@ -13,6 +13,8 @@ function [means vars] = group_stats()
 		means = [means; ms ];
 		vars = [vars; vs];
 	end
-
+%}
+	vars  = csvread("../data_all/vars.csv");
+	means = csvread("../data_all/means.csv"); 
 end
 
