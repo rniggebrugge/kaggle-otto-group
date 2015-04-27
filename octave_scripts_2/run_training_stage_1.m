@@ -67,7 +67,7 @@ function [theta1_return theta2_return c performance] = run_training_stage_1(...
 					xtest = features_set_6(xtest_raw, xadd, xdiv);
 				elseif feature_set==7
 					fprintf("feature set 7 \n");
-					[xtrain xadd xdiv] = features_set_6(xtrain_raw);
+					[xtrain xadd xdiv] = features_set_7(xtrain_raw);
 					xtest = features_set_7(xtest_raw, xadd, xdiv);
 				else
 					fprintf('original set\n');
