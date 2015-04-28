@@ -39,11 +39,11 @@ function [h2_all_train, h2_all_test] = stack_models_2(c, Xtr, Xte)
 
 		[p h2] = predict(theta1, theta2, xtrain);
 		h2 = h2./sum(h2,2);
-		h2_all_train = [h2_all h2];
+		h2_all_train = [h2_all_train h2];
 
 		[p h2] = predict(theta1, theta2, xtest);
 		h2 = h2./sum(h2,2);
-		h2_all_test = [h2_all h2];
+		h2_all_test = [h2_all_test h2];
 
 		model_used_index++;
 
