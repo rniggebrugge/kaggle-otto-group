@@ -35,6 +35,9 @@ function [h2_all_train, h2_all_test] = stack_models_2(c, Xtr, Xte)
 		elseif feature_set==9
 			fprintf("feature set 9 \n");
 			[xtrain xtest] = features_set_9(Xtr, Xte);
+		else
+			xtrain = Xtr;
+			xtest = Xte;
 		end
 
 		[p h2] = predict(theta1, theta2, xtrain);
