@@ -73,6 +73,10 @@ function [theta1_return theta2_return c performance] = run_training_stage_1(...
 					fprintf("feature set 8 \n");
 					[xtrain xtest] = features_set_8(xtrain_raw, xtest_raw);
 					xadd=0; xdiv=1;
+				elseif feature_set==9
+					fprintf("feature set 9 \n");
+					[xtrain xtest] = features_set_9(xtrain_raw, xtest_raw);
+					xadd=0; xdiv=1;
 				else
 					fprintf('original set\n');
 					xtrain = xtrain_raw;
