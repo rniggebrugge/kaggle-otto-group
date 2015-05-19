@@ -3,7 +3,6 @@ function xthick = thicken(x)
 	[m,n] = size(x);
 	xthick = x;
 	xthick(xthick~=0)=1;
-	xthick = int8(xthick);
 
 	xleft = [xthick(:, 2:n) zeros(m,1)];
 	xright = [zeros(m,1) xthick(:, 1:n-1) ];
