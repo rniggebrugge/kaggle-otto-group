@@ -12,7 +12,7 @@ function [Theta1 Theta2] = ...
 	size(x)
 
 	input_layer_size = size(x,2); 
-	num_labels = 9; 
+	num_labels = 10; 
 
 	if ~exist('th1', 'var') || isempty(th1)
 		initial_Theta1 = randInitializeWeights(input_layer_size, hidden_layer_size);
