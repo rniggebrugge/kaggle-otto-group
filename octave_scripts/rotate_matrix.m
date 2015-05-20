@@ -6,18 +6,5 @@ function [x y] = rotate_matrix()
 	y(y==0)=10;
 	x(:,1)=[];
 
-#{	
-	n=size(x,1);
-	for idx=1:n
-		m = reshape( x(idx,:),28,28);
-		temp = rot9(m,1);
-		x = [x; temp(:)'];
-		temp = rot90(m,-1);
-		x = [x; temp(:)'];
-		y = [y; y(idx)];
-		y = [y; y(idx)];
-	end
-#}
-
 
 end
