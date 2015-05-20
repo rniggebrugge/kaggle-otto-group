@@ -9,8 +9,6 @@ function [Theta1 Theta2] = ...
 	    hidden_layer_size = 25;
 	end
 
-	size(x)
-
 	input_layer_size = size(x,2); 
 	num_labels = 10; 
 
