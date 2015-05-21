@@ -20,9 +20,14 @@ function [model_theta_1, model_theta_2, fs, alpha] = ada_nn( ...
 
 	for its = 1:iterations
 		randomrows = randperm(m)(1:samplesize);
+		nmodels = ntrainings;
+		if its == 1
+			randomrows = randperm(m)(1:3*samplesize);
+			nmodels = 1;
+		end
 		y_subset = y(randomrows);
 		minError = inf;
-		for mdls = 1:ntrainings
+		for mdls = 1:nmodels
 			randomcols = randperm(n)(1:nfeatures);
 			x_subset = x(randomrows, randomcols);
 			x_small = x(:, randomcols); % for testing
@@ -31,7 +36,12 @@ function [model_theta_1, model_theta_2, fs, alpha] = ada_nn( ...
 			fprintf('\n>> Iteration %i of %i , ', [its, iterations]);
 			fprintf('model %i of %i , ', [mdls, ntrainings]);
 			fprintf(' :: Hidden layer size %i\n', hidden_layer);
-			[th1 th2] = kaggle_run(x_subset, y_subset, hidden_layer, lambda, 150);
+			nits = 150;
+			if its == 1
+				nits = 500;
+			end
+
+			[th1 th2] = kaggle_run(x_subset, y_subset, hidden_layer, lambda, nits);
 			[pred h2] = predict(th1, th2, x_small);
 			logloss = multiclass_logloss2(y, h2);
 			accuracy = mean(pred ==y);
