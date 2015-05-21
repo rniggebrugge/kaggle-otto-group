@@ -4,7 +4,8 @@ function [model_theta_1, model_theta_2, fs, alpha] = ada_nn( ...
 	iterations, ...
 	samplesize, ...
 	ntrainings, ...
-	nfeatures)
+	nfeatures, ...
+	initial_boost)
 
 	% input: x, y, lambda, iterations, samplesize, 
 	% ntrainings, nfeatures
@@ -21,8 +22,8 @@ function [model_theta_1, model_theta_2, fs, alpha] = ada_nn( ...
 	for its = 1:iterations
 		randomrows = randperm(m)(1:samplesize);
 		nmodels = ntrainings;
-		if its == 1
-			randomrows = randperm(m)(1:3*samplesize);
+		if initial_boost > 0 & its == 1
+			randomrows = randperm(m)(1:initial_boost*samplesize);
 			nmodels = 1;
 		end
 		y_subset = y(randomrows);
@@ -37,7 +38,7 @@ function [model_theta_1, model_theta_2, fs, alpha] = ada_nn( ...
 			fprintf('model %i of %i , ', [mdls, ntrainings]);
 			fprintf(' :: Hidden layer size %i\n', hidden_layer);
 			nits = 150;
-			if its == 1
+			if initial_boost > 0 & its == 1
 				nits = 500;
 			end
 
