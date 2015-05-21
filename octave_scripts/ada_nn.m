@@ -27,11 +27,11 @@ function [model_theta_1, model_theta_2, fs, alpha] = ada_nn( ...
 			x_subset = x(randomrows, randomcols);
 			x_small = x(:, randomcols); % for testing
 			% here is some work to be done. random hiddenlayersize
-			hidden_layer = 60 + randi(30)*2;
+			hidden_layer = 60 + randi(24)*5;
 			fprintf('\n>> Iteration %i of %i , ', [its, iterations]);
 			fprintf('model %i of %i , ', [mdls, ntrainings]);
 			fprintf(' :: Hidden layer size %i\n', hidden_layer);
-			[th1 th2] = kaggle_run(x_subset, y_subset, hidden_layer, lambda, 120);
+			[th1 th2] = kaggle_run(x_subset, y_subset, hidden_layer, lambda, 150);
 			[pred h2] = predict(th1, th2, x_small);
 			logloss = multiclass_logloss2(y, h2);
 			accuracy = mean(pred ==y);
