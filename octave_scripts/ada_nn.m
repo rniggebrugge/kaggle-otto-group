@@ -1,23 +1,32 @@
-function [model_theta_1, model_theta_2, fs, alpha] = ada_nn( ...
+function [model_theta_1, model_theta_2, fs, alpha, D] = ada_nn( ...
 	x, y, 
 	lambda, ...
 	iterations, ...
 	samplesize, ...
 	ntrainings, ...
 	nfeatures, ...
-	initial_boost)
+	initial_boost,
+	m1, m2, f, a, Din)
 
 	% input: x, y, lambda, iterations, samplesize, 
 	% ntrainings, nfeatures
 
-
-	model_theta_1 = {};
-	model_theta_2 = {};
-	fs = [];
-	alpha = [];
-
 	[m, n] = size(x);
-	D = ones(m,1)/m;
+
+	if ~exist('a', 'var') || isempty(a)
+		model_theta_1 = {};
+		model_theta_2 = {};
+		fs = [];
+		alpha = [];
+		D = ones(m,1)/m;
+	else
+		model_theta_1 = m1;
+		model_theta_2 = m2;
+		fs = f;
+		alpha = a;
+		D = Din;
+	end
+
 
 	for its = 1:iterations
 		randomrows = randperm(m)(1:samplesize);
