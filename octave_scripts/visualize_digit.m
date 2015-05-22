@@ -3,7 +3,8 @@ function visualize_digit(x, y, idx)
 	yv = y(idx);
 	fprintf('The selected image has classification: %i \n', yv);
 	img = x(idx,:);
-	img = reshape(img, 28, 28);
+	n = sqrt(length(img));
+	img = reshape(img, n, n);
 	imagesc(img');
 
 end
