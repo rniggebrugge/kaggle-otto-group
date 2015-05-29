@@ -13,8 +13,8 @@ function h = rapid_fire(x,y, xt,yt)
 
      for ix=1:iterations
      	fprintf('Iterations %i / %i \n', [ix, iterations]);
-     	rr = randperm(m)(1:2000);
-     	rc = randperm(n)(1:140);
+     	rr = randperm(m)(1:500);
+     	rc = randperm(n)(1:70);
      	x_ = x(rr,rc);
      	y_ = y(rr);
      	xt_= xt(:,rc);
