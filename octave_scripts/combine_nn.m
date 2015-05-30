@@ -6,9 +6,9 @@ function weights = combine_nn(x,y, xv, yv, xt, yt)
 
 	[m n] = size(x);
 
-	nmodels = 500;
-	nfeats  = 100;
-	niters  = 150;
+	nmodels = 50;
+	nfeats  = 300;
+	niters  = 350;
 	lambda  = 4;
 	nhl     = 150;
 
