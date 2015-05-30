@@ -10,7 +10,8 @@ function xout = pixel_correlate(x)
 			my_col = ix+28*iy+1;
 			col_dx = my_col+step;
 			col_dy = my_col+step*28;
-			xout = [xout x(:,my_col).*x(:,col_dx) x(:,my_col).*x(:,col_dy)];
+			col_dyx =col_dy+step;
+			xout = [xout x(:,my_col).*x(:,col_dx) x(:,my_col).*x(:,col_dy) x(:,my_col).*x(:,col_dyx)];
 		end
 	end
 end
